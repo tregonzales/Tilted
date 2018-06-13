@@ -8,29 +8,30 @@ public class gateSpawner : MonoBehaviour {
 	public float distance;
 	public int spawnNum;
 	private float currentYtrans = 0;
-	private GameObject[] currentGates;
+	// private GameObject[] currentGates;
 
 	// Use this for initialization
 	void Start () {
-		currentGates = new GameObject[spawnNum];
+		// currentGates = new GameObject[spawnNum];
 		//make first ten
-		createGates();
+		createGates(false);
 	}
 
-	public void createGates() {
-		GameObject curGate;
-		Vector3 position;
-		for (int i = 0; i < currentGates.Length; i++) {
-			position = new Vector3(0, currentYtrans, 0);
-			curGate = Instantiate(gatePrefab, position, Quaternion.identity);
-			currentYtrans += distance;
-			// curGate.GetComponentInChildren<gateWallShifter>().Shift();
-			currentGates[i] = curGate;
-		}
-	}
-	
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void createGates(bool clear = true) {
+		// GameObject curGate;
+		Vector3 position;
+		spawnNum = clear ? 10 : spawnNum; 
+		for (int i = 0; i < spawnNum; i++) {
+			position = new Vector3(0, currentYtrans, 0);
+			// curGate = Instantiate(gatePrefab, position, Quaternion.identity);
+			Instantiate(gatePrefab, position, Quaternion.identity);
+			currentYtrans += distance;
+			// currentGates[i] = curGate;
+		}
 	}
 }

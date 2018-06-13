@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class tilterController : MonoBehaviour {
 
+	//scale for gates is differnet for box and ball
+	//box: 34.0469
+	//ball: 32
+
 	public float velocity;
 
 	public float rotiationVelocity;
@@ -11,14 +15,17 @@ public class tilterController : MonoBehaviour {
 	public bool rightPress;
 
 	public bool leftPress;
+
+	private Rigidbody2D body;
 	// Use this for initialization
 	void Start () {
-		
+		body = transform.GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transform.Translate(Vector3.up * velocity * Time.deltaTime, Space.World);
+		// transform.Translate(Vector3.up * velocity * Time.deltaTime, Space.World);
+		body.velocity = Vector3.up*velocity;
 		Rotate();
 	}
 

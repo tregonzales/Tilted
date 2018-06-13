@@ -14,6 +14,8 @@ public class gateController : MonoBehaviour {
 		
 	}
 	void OnTriggerEnter2D (Collider2D other) {
-		Debug.Log("got heeeem");
+		if (other.CompareTag("Player")) {
+			Debug.Log("got heeeem");
+		}
 	}
 }
