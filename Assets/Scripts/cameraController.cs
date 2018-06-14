@@ -13,6 +13,14 @@ public class cameraController: MonoBehaviour
 
     public float targetWidth;
 
+    private float t = 0;
+
+    public float duration;
+
+    Color nextColor;
+
+    Color curColor;
+
     Camera cam;
 
     // Use this for initialization
@@ -45,13 +53,26 @@ public class cameraController: MonoBehaviour
         }
 
         cam.rect = camRect;
-
+        curColor = cam.backgroundColor;
+        nextColor = Random.ColorHSV(0, 1, .5f, 1, .5f, 1, 1, 1);
     }
 
     // LateUpdate is called after Update each frame
     void Update()
     {
+       
         transform.position = new Vector3(target.transform.position.x, target.transform.position.y + offsetY, -10);
-        
+
+        t += Time.deltaTime/duration;
+        cam.backgroundColor = Color.Lerp(curColor, nextColor, t);
+
+        if (t >= 1) {
+            t = 0;
+            //set current color and the former next color bc that is now what the camera background is
+            curColor = nextColor;
+            //create a new color to lerp towards
+            nextColor = Random.ColorHSV(0, 1, .5f, 1, .5f, 1, 1, 1);
+        }
     }
+
 }

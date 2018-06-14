@@ -56,6 +56,7 @@
      <Compile Include="Assets\Scripts\cameraController.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\gateController.cs" />
+     <Compile Include="Assets\Scripts\gateCover.cs" />
      <Compile Include="Assets\Scripts\gateGoal.cs" />
      <Compile Include="Assets\Scripts\gateSpawner.cs" />
      <Compile Include="Assets\Scripts\gateWallShifter.cs" />

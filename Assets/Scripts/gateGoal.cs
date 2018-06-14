@@ -25,6 +25,7 @@ public class gateGoal : MonoBehaviour {
 			other.GetComponent<ballController>().updateScore();
 			gateFade.Play();
 			Destroy(gateGoalHolder, gateFade.clip.length);
+			Debug.Log("passed");
 		}
 	}
 }
