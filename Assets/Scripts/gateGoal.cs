@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class gateGoal : MonoBehaviour {
 
+	//object that holds whole gate (also the parent)
 	private GameObject gateGoalHolder;
 
+	//to fade the entire object away when completing
 	Animation gateFade;
 
 	// Use this for initialization
@@ -19,11 +21,14 @@ public class gateGoal : MonoBehaviour {
 		
 	}
 
+	//successfully passed this gate
 	void OnTriggerExit2D(Collider2D other) {
 		if (other.CompareTag("Player")) {
-			// other.GetComponent<boxController>().updateScore();
+			//update the score
 			other.GetComponent<ballController>().updateScore();
+			//fade the gate to nothing
 			gateFade.Play();
+			//destroy the whole parent object when animation has completed
 			Destroy(gateGoalHolder, gateFade.clip.length);
 			Debug.Log("passed");
 		}

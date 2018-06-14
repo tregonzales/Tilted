@@ -13,6 +13,8 @@ public class gateController : MonoBehaviour {
 	void Update () {
 		
 	}
+
+	//has collided with wall or gate wall, lose condition
 	void OnTriggerEnter2D (Collider2D other) {
 		if (other.CompareTag("Player")) {
 			Debug.Log("got heeeem");

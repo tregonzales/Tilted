@@ -24,8 +24,9 @@ public class tilterController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// transform.Translate(Vector3.up * velocity * Time.deltaTime, Space.World);
+		//go straight up at constant rate
 		body.velocity = Vector3.up*velocity;
+		//rotate value that user defines with button presses
 		Rotate();
 	}
 
@@ -38,6 +39,7 @@ public class tilterController : MonoBehaviour {
 		}	
 	}
 
+	//set true if button is held
 	public void updateButtonHeld(bool left) {
 		if (left) {
 			leftPress = true;
@@ -47,6 +49,7 @@ public class tilterController : MonoBehaviour {
 		}
 	}
 
+	//set false if button is released
 	public void updateButtonUp(bool left) {
 		if (left) {
 			leftPress = false;

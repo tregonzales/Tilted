@@ -121,6 +121,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
   gateSpawner: {fileID: 0}
+  frames:
+  - {fileID: 21300000, guid: 13d958b8bf242439495c40a81a27d321, type: 3}
+  - {fileID: 21300000, guid: f478a6cc501654d7ba80a8b8582f8550, type: 3}
+  - {fileID: 21300000, guid: ccb230ab765904114b7da4417edb674f, type: 3}
+  - {fileID: 21300000, guid: e0fffbaf14d4849fca90daaea3fd43c7, type: 3}
+  framesPerSecond: 5
 --- !u!212 &212243967843782730
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -154,7 +160,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: ca29ffaa7d5b04c46adbf426bd2e5631, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
