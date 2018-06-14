@@ -366,6 +366,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114119094585222918, guid: f31015a5d1a43478bb15fa2adbdaea18,
+        type: 2}
+      propertyPath: frames.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4075401132596546, guid: f31015a5d1a43478bb15fa2adbdaea18, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -408,6 +413,30 @@ Prefab:
       propertyPath: gateSpawner
       value: 
       objectReference: {fileID: 1108438524}
+    - target: {fileID: 114119094585222918, guid: f31015a5d1a43478bb15fa2adbdaea18,
+        type: 2}
+      propertyPath: frames.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 13d958b8bf242439495c40a81a27d321,
+        type: 3}
+    - target: {fileID: 114119094585222918, guid: f31015a5d1a43478bb15fa2adbdaea18,
+        type: 2}
+      propertyPath: frames.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: f478a6cc501654d7ba80a8b8582f8550,
+        type: 3}
+    - target: {fileID: 114119094585222918, guid: f31015a5d1a43478bb15fa2adbdaea18,
+        type: 2}
+      propertyPath: frames.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: ccb230ab765904114b7da4417edb674f,
+        type: 3}
+    - target: {fileID: 114119094585222918, guid: f31015a5d1a43478bb15fa2adbdaea18,
+        type: 2}
+      propertyPath: frames.Array.data[3]
+      value: 
+      objectReference: {fileID: 21300000, guid: e0fffbaf14d4849fca90daaea3fd43c7,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f31015a5d1a43478bb15fa2adbdaea18, type: 2}
   m_IsPrefabParent: 0
