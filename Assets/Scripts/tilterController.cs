@@ -58,4 +58,10 @@ public class tilterController : MonoBehaviour {
 			rightPress = false;
 		}
 	}
+
+	//just stop moving 
+	public void loseAnimation() {
+		velocity = 0;
+		body.constraints = RigidbodyConstraints2D.FreezeAll;
+	}
 }

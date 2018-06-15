@@ -5,17 +5,14 @@ using UnityEngine.UI;
 
 public class ballController : MonoBehaviour {
 	
+	//the thing tilting this object
+	public tilterController tilter;
+
 	//ui score text
 	public Text scoreText;
 
 	//the thing that spawns the gates
 	public gateSpawner gateSpawner;
-
-	//previously used for my sprite animations
-	public Sprite[] frames;
-
-	//frames for animation
-    public float framesPerSecond = 5;
 
 	//keeps track of universal score
 	private int score = 0;
@@ -48,7 +45,8 @@ public class ballController : MonoBehaviour {
 	}
 
 	public void loseAnimation() {
-		//turn off the sprites that represent the ball
+		//turn off the sprites that represent the ball and stop motion
+		tilter.loseAnimation();
 		transform.GetChild(0).gameObject.SetActive(false);
 		transform.GetChild(1).gameObject.SetActive(false);
 		ballSprite.enabled = false;
@@ -59,23 +57,11 @@ public class ballController : MonoBehaviour {
 			//explode them
 			child.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)) * explosionForce);
 		}
-		// StartCoroutine(PlayAnimation());
+		StartCoroutine(promptEndGame());
 	}
 
-	IEnumerator PlayAnimation()
-    {
-        // int currentFrameIndex = 0;
-        // while (true) {
-        //     spriteRenderer.sprite = frames [currentFrameIndex];
-		// 	yield return new WaitForSeconds(.05f);
-        //      // this halts the functions execution for x seconds. Can only be used in coroutines.
-		// 	currentFrameIndex++;
-        // }
-
-		
-		for (int i = 0; i < frames.Length; i++){
-			ballSprite.sprite = frames[i];
-			yield return new WaitForSeconds(.05f);
-		}
-    }
+	IEnumerator promptEndGame() {
+		yield return new WaitForSeconds(1f);
+		GameManager.instance.ToggleLoseGame();
+	}
 }

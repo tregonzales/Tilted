@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\ballController.cs" />
      <Compile Include="Assets\Scripts\boxController.cs" />
      <Compile Include="Assets\Scripts\cameraController.cs" />
+     <Compile Include="Assets\Scripts\fallDetector.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
      <Compile Include="Assets\Scripts\gateController.cs" />
      <Compile Include="Assets\Scripts\gateCover.cs" />
