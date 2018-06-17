@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Advertisements;
 
 public class GameManager : MonoBehaviour {
 
@@ -12,7 +13,8 @@ public class GameManager : MonoBehaviour {
 	public bool mainMenu;
 	public GameObject pauseButton;
 	//this is just the resume button but whatever
-	public GameObject pauseMenu;
+	public GameObject resumeButton;
+	public GameObject tryAgain;
 
 	void Start () {
 		instance = this;
@@ -20,7 +22,7 @@ public class GameManager : MonoBehaviour {
 			paused = false;
 			Time.timeScale = 1.0f;
 			pauseButton.SetActive(!paused);
-			pauseMenu.SetActive(paused);
+			resumeButton.SetActive(paused);
 		}
 		else {
 			// paused = true;	
@@ -29,6 +31,10 @@ public class GameManager : MonoBehaviour {
 	
 	void Update () {
 
+	}
+
+	public void adShow() {
+		
 	}
 		
 	public void RestartTheGameAfterSeconds(float seconds){
@@ -54,20 +60,22 @@ public class GameManager : MonoBehaviour {
 	
 	public void ToggleLoseGame() {
 		Debug.Log("ya lost");
+		pauseButton.SetActive(false);
+		tryAgain.SetActive(true);
 		Time.timeScale = 0f;
     }
 
-	public void TogglePauseMenu() {
+	public void TogglePause() {
 		if (paused)
         {
 			pauseButton.SetActive(paused);
-            pauseMenu.SetActive(!paused);
+            resumeButton.SetActive(!paused);
             Time.timeScale = 1.0f;
         }
         else
         {
 			pauseButton.SetActive(paused);
-            pauseMenu.SetActive(!paused);
+            resumeButton.SetActive(!paused);
             Time.timeScale = 0f;
         }
         paused = !paused;
