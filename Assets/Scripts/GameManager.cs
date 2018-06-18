@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void LoadMainMenu() {
-		SceneManager.LoadScene("Main_Menu");
+		SceneManager.LoadScene("mainMenu");
 	}
 
 	public void LoadNextScene(float seconds) {
