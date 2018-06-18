@@ -9,7 +9,7 @@ public class ballController : MonoBehaviour {
 	public tilterController tilter;
 
 	//ui score text
-	public Text scoreText;
+	public scoreController scoreController;
 
 	//the thing that spawns the gates
 	public gateSpawner gateSpawner;
@@ -25,6 +25,7 @@ public class ballController : MonoBehaviour {
 
 	//how much for to explode with
 	public float explosionForce;
+
 	// Use this for initialization
 	void Start () {
 		ballSprite = GetComponent<SpriteRenderer>();
@@ -36,12 +37,12 @@ public class ballController : MonoBehaviour {
 	}
 
 	public void updateScore() {
-		score++;
-		scoreText.text = score.ToString();
 		//every 10 gates passed, create ten more gates
+		score++;
 		if (score % 10 == 0) {
 			gateSpawner.createGates();
 		}
+		scoreController.updateScore(score);
 	}
 
 	public void loseAnimation() {

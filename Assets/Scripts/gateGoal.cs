@@ -10,10 +10,14 @@ public class gateGoal : MonoBehaviour {
 	//to fade the entire object away when completing
 	Animation gateFade;
 
+	//to make sure not double counting
+	private bool passed;
+
 	// Use this for initialization
 	void Start () {
 		gateGoalHolder = transform.parent.gameObject;
 		gateFade = gateGoalHolder.GetComponent<Animation>();
+		passed = false;
 	}
 	
 	// Update is called once per frame
@@ -23,7 +27,8 @@ public class gateGoal : MonoBehaviour {
 
 	//successfully passed this gate
 	void OnTriggerExit2D(Collider2D other) {
-		if (other.CompareTag("Player")) {
+		if (other.CompareTag("Player") && !passed) {
+			passed = true;
 			//update the score
 			other.GetComponent<ballController>().updateScore();
 			//fade the gate to nothing

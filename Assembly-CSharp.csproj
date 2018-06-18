@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\gateGoal.cs" />
      <Compile Include="Assets\Scripts\gateSpawner.cs" />
      <Compile Include="Assets\Scripts\gateWallShifter.cs" />
+     <Compile Include="Assets\Scripts\scoreController.cs" />
      <Compile Include="Assets\Scripts\tilterController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

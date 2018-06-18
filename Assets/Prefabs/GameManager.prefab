@@ -55,3 +55,4 @@ MonoBehaviour:
   mainMenu: 0
   pauseButton: {fileID: 0}
   resumeButton: {fileID: 0}
+  tryAgain: {fileID: 0}
