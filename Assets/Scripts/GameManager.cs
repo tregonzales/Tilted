@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour {
 	//this is just the resume button but whatever
 	public GameObject resumeButton;
 	public GameObject tryAgain;
+	public GameObject thisScore;
+	public GameObject bestScore;
+	public GameObject highScoreInfo;
 
 	void Start () {
 		instance = this;
@@ -36,14 +39,35 @@ public class GameManager : MonoBehaviour {
 	public void adShow() {
 		
 	}
+
+	public void setHighSchore(int score) {
+		if (score > PlayerPrefs.GetInt("highScore")) {
+			//for now test using regular high score
+			highScoreInfo.SetActive(true);
+			//new high score!
+			PlayerPrefs.SetInt("highScore", score);
+			thisScore.GetComponent<scoreController>().updateScore(score);
+			bestScore.GetComponent<scoreController>().updateScore(score);
+		}
+		else {
+			//same score, so usually do this
+			highScoreInfo.SetActive(true);
+			thisScore.GetComponent<scoreController>().updateScore(score);
+			bestScore.GetComponent<scoreController>().updateScore(PlayerPrefs.GetInt("highScore"));
+		}
+	}
 		
 	public void RestartTheGameAfterSeconds(float seconds){
 		Time.timeScale = 1.0f;
-		StartCoroutine (LoadSceneAfterSeconds (seconds, SceneManager.GetActiveScene ().name));
+		StartCoroutine (LoadSceneAfterSeconds (seconds, SceneManager.GetActiveScene().name));
 	}
 
 	public void LoadScene(float seconds, string sceneName){
 		StartCoroutine (LoadSceneAfterSeconds (seconds, sceneName));
+	}
+
+	public void LoadSceneByName(string sceneName) {
+		SceneManager.LoadScene(sceneName);
 	}
 
 	public void LoadSceneByIndex(int i){

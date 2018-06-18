@@ -1301,7 +1301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tilter: {fileID: 0}
-  scoreText: {fileID: 0}
+  scoreController: {fileID: 0}
   gateSpawner: {fileID: 0}
   explosionForce: 500
 --- !u!212 &212005508356486748

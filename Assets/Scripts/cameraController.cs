@@ -21,6 +21,9 @@ public class cameraController: MonoBehaviour
     //how long the lerp should last for one direction
     public float duration;
 
+    //to see if we are in main menu
+    public bool mainMenu;
+
     //first color to lerp from
     Color curColor;
 
@@ -67,16 +70,20 @@ public class cameraController: MonoBehaviour
         //set first color to lerp from default color set by us
         curColor = cam.backgroundColor;
 
+
         //get the next color to lerp to
         nextColor = Random.ColorHSV(0, 1, .5f, 1, .5f, 1, 1, 1);
+
+
     }
 
     // LateUpdate is called after Update each frame
     void Update()
     {
-       
-       //follow the sliding bar at an offset 
-        transform.position = new Vector3(target.transform.position.x, target.transform.position.y + offsetY, -10);
+        if (!mainMenu) {
+        //follow the sliding bar at an offset 
+            transform.position = new Vector3(target.transform.position.x, target.transform.position.y + offsetY, -10);
+        }
 
         //t is a blending value to mix the colors
         //set it as a proportion of our duration to smoothly transition from one color to another
@@ -93,5 +100,4 @@ public class cameraController: MonoBehaviour
             nextColor = Random.ColorHSV(0, 1, .5f, 1, .5f, 1, 1, 1);
         }
     }
-
 }

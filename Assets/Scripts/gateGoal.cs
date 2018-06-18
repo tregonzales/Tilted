@@ -29,6 +29,7 @@ public class gateGoal : MonoBehaviour {
 	void OnTriggerExit2D(Collider2D other) {
 		if (other.CompareTag("Player") && !passed) {
 			passed = true;
+			gateGoalHolder.transform.GetChild(0).GetComponent<gateController>().passed = true;
 			//update the score
 			other.GetComponent<ballController>().updateScore();
 			//fade the gate to nothing

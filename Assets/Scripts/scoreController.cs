@@ -7,15 +7,10 @@ public class scoreController : MonoBehaviour {
 
 
 	public Sprite[] numberSprites;
-	private Image onesPlace;
-	private Image tensPlace;
 	private Image[] numberSpots;
 
 	// Use this for initialization
-	void Start () {
-		//get the boi and get its digit places
-		onesPlace = transform.GetChild(0).GetComponent<Image>();
-		tensPlace = transform.GetChild(1).GetComponent<Image>();
+	void Awake () {
 
 		numberSpots = new Image[6];
 		//get all the children images of all number spots starting with ones place
@@ -40,10 +35,9 @@ public class scoreController : MonoBehaviour {
 		}
 	}
 
-	//maybe use in future
-	//this would mean update score would do something like shifting the number spots around to not show all 6 digits at once
-	//and then this funciton would actually set the sprite images
-	public void changeNumbers(int score) {
-
+	public void shift(int score) {
+		//use this function to shift the anchors and only set certain digits to active to only see
+		//digits that hold real value
+		//implement later
 	}
 }

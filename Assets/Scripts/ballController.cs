@@ -46,6 +46,9 @@ public class ballController : MonoBehaviour {
 	}
 
 	public void loseAnimation() {
+		//send data to game manager and check high score
+		GameManager.instance.setHighSchore(score);
+		
 		//turn off the sprites that represent the ball and stop motion
 		tilter.loseAnimation();
 		transform.GetChild(0).gameObject.SetActive(false);
