@@ -14,10 +14,11 @@ public class GameManager : MonoBehaviour {
 	public GameObject pauseButton;
 	//this is just the resume button but whatever
 	public GameObject resumeButton;
-	public GameObject tryAgain;
+	public GameObject postGameOptions;
 	public GameObject thisScore;
 	public GameObject bestScore;
 	public GameObject highScoreInfo;
+	public GameObject playScoreCounter;
 
 	void Start () {
 		instance = this;
@@ -82,10 +83,12 @@ public class GameManager : MonoBehaviour {
 		StartCoroutine (LoadSceneAfterSeconds (seconds, null));
 	}
 	
-	public void ToggleLoseGame() {
+	public void ToggleLoseGame(int score) {
 		Debug.Log("ya lost");
+		playScoreCounter.SetActive(false);
 		pauseButton.SetActive(false);
-		tryAgain.SetActive(true);
+		postGameOptions.SetActive(true);
+		setHighSchore(score);
 		Time.timeScale = 0f;
     }
 

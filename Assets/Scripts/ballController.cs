@@ -46,8 +46,6 @@ public class ballController : MonoBehaviour {
 	}
 
 	public void loseAnimation() {
-		//send data to game manager and check high score
-		GameManager.instance.setHighSchore(score);
 		
 		//turn off the sprites that represent the ball and stop motion
 		tilter.loseAnimation();
@@ -65,7 +63,7 @@ public class ballController : MonoBehaviour {
 	}
 
 	IEnumerator promptEndGame() {
-		yield return new WaitForSeconds(1f);
-		GameManager.instance.ToggleLoseGame();
+		yield return new WaitForSeconds(.5f);
+		GameManager.instance.ToggleLoseGame(score);
 	}
 }
