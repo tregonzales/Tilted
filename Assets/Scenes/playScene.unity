@@ -401,11 +401,6 @@ Prefab:
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 279117512}
-    - target: {fileID: 114016057711416954, guid: 8ee0fa45a57d249dd994022e0a351a96,
-        type: 2}
-      propertyPath: playScoreCounter
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8ee0fa45a57d249dd994022e0a351a96, type: 2}
   m_IsPrefabParent: 0
