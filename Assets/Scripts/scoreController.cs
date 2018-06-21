@@ -37,6 +37,7 @@ public class scoreController : MonoBehaviour {
 		//check length to see if we need to scale panel
 		int length = score.ToString().Length;
 		if (length > numDigits) {
+			numDigits = length;
 			shift(length);
 		}
 	}

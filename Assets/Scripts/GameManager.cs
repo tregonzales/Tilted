@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour {
 	public GameObject bestScore;
 	public GameObject highScoreInfo;
 	public GameObject playScoreCounter;
+	public int playsBeforeAd;
 
 	void Start () {
 		instance = this;
@@ -37,10 +38,6 @@ public class GameManager : MonoBehaviour {
 
 	}
 
-	public void adShow() {
-		
-	}
-
 	public void setHighSchore(int score) {
 		if (score > PlayerPrefs.GetInt("highScore")) {
 			//for now test using regular high score
@@ -56,6 +53,33 @@ public class GameManager : MonoBehaviour {
 			thisScore.GetComponent<scoreController>().updateScore(score);
 			bestScore.GetComponent<scoreController>().updateScore(PlayerPrefs.GetInt("highScore"));
 		}
+	}
+
+	public void adCheck() {
+		postGameOptions.SetActive(false);
+		int curPlays = PlayerPrefs.GetInt("plays");
+		if (curPlays >= playsBeforeAd - 1) {
+			PlayerPrefs.SetInt("plays", 0);
+			if (Advertisement.IsReady("video")) {
+				Advertisement.Show("video");
+				StartCoroutine(WaitForAd());
+			}
+			else {
+				RestartTheGameAfterSeconds(.5f);
+			}
+		}
+		else {
+			curPlays++;
+			PlayerPrefs.SetInt("plays", curPlays);
+			RestartTheGameAfterSeconds(.5f);
+		}
+	}
+
+	IEnumerator WaitForAd() {
+		while (Advertisement.isShowing) {
+			yield return null;
+		}
+		RestartTheGameAfterSeconds(.5f);
 	}
 		
 	public void RestartTheGameAfterSeconds(float seconds){
