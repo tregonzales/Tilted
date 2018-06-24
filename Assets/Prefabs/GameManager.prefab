@@ -55,4 +55,9 @@ MonoBehaviour:
   mainMenu: 0
   pauseButton: {fileID: 0}
   resumeButton: {fileID: 0}
-  tryAgain: {fileID: 0}
+  postGameOptions: {fileID: 0}
+  thisScore: {fileID: 0}
+  bestScore: {fileID: 0}
+  highScoreInfo: {fileID: 0}
+  playScoreCounter: {fileID: 0}
+  playsBeforeAd: 20

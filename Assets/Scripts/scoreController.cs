@@ -8,7 +8,7 @@ public class scoreController : MonoBehaviour {
 
 	Text scoreText;
 	public bool playScoreCounter;
-	private RectTransform panelRectTrans;
+	private Text colorText;
 	private int numDigits;
 
 	//implement dynamic panel scaling, scale at .16 for every digit present in number
@@ -18,7 +18,7 @@ public class scoreController : MonoBehaviour {
 
 		scoreText = GetComponent<Text>();
 		numDigits = 0;
-		panelRectTrans = transform.parent.GetChild(0).GetComponent<RectTransform>();
+		colorText = transform.parent.GetChild(0).GetComponent<Text>();
 		if(playScoreCounter) {
 			updateScore(0);
 		}
@@ -38,13 +38,15 @@ public class scoreController : MonoBehaviour {
 		int length = score.ToString().Length;
 		if (length > numDigits) {
 			numDigits = length;
-			shift(length);
 		}
-	}
 
-	public void shift(int length) {
-		Vector3 temp = panelRectTrans.localScale;
-		temp.x = .16f * length;
-		panelRectTrans.localScale = temp;
+		//now update the color text above
+
+		//use string holder
+		string s = "";
+		for (int i = 0; i < length; i++){
+			s += "_";
+		}
+		colorText.text = s;
 	}
 }

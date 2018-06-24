@@ -8,17 +8,40 @@ using UnityEngine.Advertisements;
 
 public class GameManager : MonoBehaviour {
 
+	//thats me, everywhere all at once
 	public static GameManager instance;
+
+	//current ui system
+	public GameObject currentUI;
+
+	//is we paused
 	public bool paused;
+	
+	//are we in main menu
 	public bool mainMenu;
+
+	//pretty self explanatory
 	public GameObject pauseButton;
+
 	//this is just the resume button but whatever
 	public GameObject resumeButton;
+
+	//choices after losing
 	public GameObject postGameOptions;
+
+	//post game this score text and panel
 	public GameObject thisScore;
+
+	//post game best score text and panel
 	public GameObject bestScore;
+
+	//the big object holding it all for post game score info
 	public GameObject highScoreInfo;
+
+	//top screen counter while playing
 	public GameObject playScoreCounter;
+
+	//how many times to play before you hit an ad
 	public int playsBeforeAd;
 
 	void Start () {
@@ -38,6 +61,12 @@ public class GameManager : MonoBehaviour {
 
 	}
 
+	public void scaleUI() {
+		//scale camera to pixel sizes to always fit
+		currentUI.GetComponent<CanvasScaler>().referenceResolution =
+		new Vector2(Camera.main.pixelWidth, Camera.main.pixelHeight);
+	}
+
 	public void setHighSchore(int score) {
 		if (score > PlayerPrefs.GetInt("highScore")) {
 			//for now test using regular high score
@@ -55,31 +84,32 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public void adCheck() {
+	public void adCheck(bool restart) {
+		string nextScene = restart ? SceneManager.GetActiveScene().name : "mainMenu";
 		postGameOptions.SetActive(false);
 		int curPlays = PlayerPrefs.GetInt("plays");
 		if (curPlays >= playsBeforeAd - 1) {
 			PlayerPrefs.SetInt("plays", 0);
 			if (Advertisement.IsReady("video")) {
 				Advertisement.Show("video");
-				StartCoroutine(WaitForAd());
+				StartCoroutine(WaitForAd(nextScene));
 			}
 			else {
-				RestartTheGameAfterSeconds(.5f);
+				LoadScene(.5f, nextScene);
 			}
 		}
 		else {
 			curPlays++;
 			PlayerPrefs.SetInt("plays", curPlays);
-			RestartTheGameAfterSeconds(.5f);
+			LoadScene(.5f, nextScene);
 		}
 	}
 
-	IEnumerator WaitForAd() {
+	IEnumerator WaitForAd(string sceneAfter) {
 		while (Advertisement.isShowing) {
 			yield return null;
 		}
-		RestartTheGameAfterSeconds(.5f);
+		LoadScene(.5f, sceneAfter);
 	}
 		
 	public void RestartTheGameAfterSeconds(float seconds){
@@ -88,6 +118,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void LoadScene(float seconds, string sceneName){
+		Time.timeScale = 1.0f;
 		StartCoroutine (LoadSceneAfterSeconds (seconds, sceneName));
 	}
 

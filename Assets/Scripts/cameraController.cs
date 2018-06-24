@@ -65,10 +65,15 @@ public class cameraController: MonoBehaviour
             camRect.x = (1.0f - scaleWidth) / 2.0f;
         }
 
+        //set to new rect scaling
         cam.rect = camRect;
+
+        //also scale the ui now
+        GameManager.instance.scaleUI();
 
         //set first color to lerp from default color set by us
         curColor = cam.backgroundColor;
+        
 
 
         //get the next color to lerp to
