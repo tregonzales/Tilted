@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour {
 			Time.timeScale = 1.0f;
 			pauseButton.SetActive(!paused);
 			resumeButton.SetActive(paused);
+			int curPlays = PlayerPrefs.GetInt("plays");
+			curPlays++;
+			PlayerPrefs.SetInt("plays", curPlays);
 		}
 		else {
 			// paused = true;	
@@ -88,10 +91,10 @@ public class GameManager : MonoBehaviour {
 		string nextScene = restart ? SceneManager.GetActiveScene().name : "mainMenu";
 		postGameOptions.SetActive(false);
 		int curPlays = PlayerPrefs.GetInt("plays");
-		if (curPlays >= playsBeforeAd - 1) {
-			PlayerPrefs.SetInt("plays", 0);
+		if (curPlays >= playsBeforeAd) {
 			if (Advertisement.IsReady("video")) {
 				Advertisement.Show("video");
+				PlayerPrefs.SetInt("plays", 0);
 				StartCoroutine(WaitForAd(nextScene));
 			}
 			else {
@@ -99,8 +102,8 @@ public class GameManager : MonoBehaviour {
 			}
 		}
 		else {
-			curPlays++;
-			PlayerPrefs.SetInt("plays", curPlays);
+			// curPlays++;
+			// PlayerPrefs.SetInt("plays", curPlays);
 			LoadScene(.5f, nextScene);
 		}
 	}

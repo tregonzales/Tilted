@@ -26,10 +26,22 @@ public class ballController : MonoBehaviour {
 	//how much for to explode with
 	public float explosionForce;
 
+	//the audio clips to use
+	private AudioSource[] sounds;
+
+	//beep
+	private AudioSource beep;
+
+	//pop
+	private AudioSource pop;
+
 	// Use this for initialization
 	void Start () {
 		ballSprite = GetComponent<SpriteRenderer>();
 		particleHolder = transform.GetChild(2).gameObject;
+		sounds = GetComponents<AudioSource>();
+		beep = sounds[0];
+		pop = sounds[1];
 	}
 	
 	// Update is called once per frame
@@ -43,11 +55,13 @@ public class ballController : MonoBehaviour {
 			gateSpawner.createGates();
 		}
 		scoreController.updateScore(score);
+		beep.Play();
 	}
 
 	public void loseAnimation() {
 		
 		//turn off the sprites that represent the ball and stop motion
+		pop.Play();
 		tilter.loseAnimation();
 		transform.GetChild(0).gameObject.SetActive(false);
 		transform.GetChild(1).gameObject.SetActive(false);
