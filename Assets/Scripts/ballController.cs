@@ -35,6 +35,9 @@ public class ballController : MonoBehaviour {
 	//pop
 	private AudioSource pop;
 
+	//to track if we already lost so particles dont trigger animation again
+	private bool lost;
+
 	// Use this for initialization
 	void Start () {
 		ballSprite = GetComponent<SpriteRenderer>();
@@ -42,6 +45,7 @@ public class ballController : MonoBehaviour {
 		sounds = GetComponents<AudioSource>();
 		beep = sounds[0];
 		pop = sounds[1];
+		lost = false;
 	}
 	
 	// Update is called once per frame
@@ -60,20 +64,24 @@ public class ballController : MonoBehaviour {
 
 	public void loseAnimation() {
 		
-		//turn off the sprites that represent the ball and stop motion
-		pop.Play();
-		tilter.loseAnimation();
-		transform.GetChild(0).gameObject.SetActive(false);
-		transform.GetChild(1).gameObject.SetActive(false);
-		ballSprite.enabled = false;
+		if (!lost) {
+			//dont run this stuff again bc we done lost already
+			lost = true;
+			//turn off the sprites that represent the ball and stop motion
+			pop.Play();
+			tilter.loseAnimation();
+			transform.GetChild(0).gameObject.SetActive(false);
+			transform.GetChild(1).gameObject.SetActive(false);
+			ballSprite.enabled = false;
 
-		//activate particles to be "pieces" of the ball
-		particleHolder.SetActive(true);
-		foreach (Transform child in particleHolder.transform){
-			//explode them
-			child.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)) * explosionForce);
+			//activate particles to be "pieces" of the ball
+			particleHolder.SetActive(true);
+			foreach (Transform child in particleHolder.transform){
+				//explode them
+				child.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)) * explosionForce);
+			}
+			StartCoroutine(promptEndGame());
 		}
-		StartCoroutine(promptEndGame());
 	}
 
 	IEnumerator promptEndGame() {

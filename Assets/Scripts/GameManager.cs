@@ -41,6 +41,9 @@ public class GameManager : MonoBehaviour {
 	//top screen counter while playing
 	public GameObject playScoreCounter;
 
+	//main menu play button
+	public GameObject menuPlay;
+
 	//how many times to play before you hit an ad
 	public int playsBeforeAd;
 
@@ -87,9 +90,16 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public void adCheck(bool restart) {
-		string nextScene = restart ? SceneManager.GetActiveScene().name : "mainMenu";
-		postGameOptions.SetActive(false);
+	public void adCheck(bool play) {
+		string nextScene = play ? "playScene" : "mainMenu";
+
+		if (!mainMenu) {
+			postGameOptions.SetActive(false);
+		}
+		else {
+			menuPlay.SetActive(false);
+		}
+		
 		int curPlays = PlayerPrefs.GetInt("plays");
 		if (curPlays >= playsBeforeAd) {
 			if (Advertisement.IsReady("video")) {

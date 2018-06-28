@@ -725,6 +725,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114075117100119994, guid: c7ad08caf5e984937a051117980f229a,
         type: 2}
+      propertyPath: currentUI
+      value: 
+      objectReference: {fileID: 1934400117}
+    - target: {fileID: 114075117100119994, guid: c7ad08caf5e984937a051117980f229a,
+        type: 2}
       propertyPath: pauseButton
       value: 
       objectReference: {fileID: 686341975}
@@ -758,11 +763,6 @@ Prefab:
       propertyPath: playScoreCounter
       value: 
       objectReference: {fileID: 527170865}
-    - target: {fileID: 114075117100119994, guid: c7ad08caf5e984937a051117980f229a,
-        type: 2}
-      propertyPath: currentUI
-      value: 
-      objectReference: {fileID: 1934400117}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c7ad08caf5e984937a051117980f229a, type: 2}
   m_IsPrefabParent: 0

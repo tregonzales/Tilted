@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a711ad3a9111245438b6b966efc849f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentUI: {fileID: 0}
   paused: 0
   mainMenu: 0
   pauseButton: {fileID: 0}
@@ -60,4 +61,4 @@ MonoBehaviour:
   bestScore: {fileID: 0}
   highScoreInfo: {fileID: 0}
   playScoreCounter: {fileID: 0}
-  playsBeforeAd: 20
+  playsBeforeAd: 10
